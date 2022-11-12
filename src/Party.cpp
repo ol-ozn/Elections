@@ -3,7 +3,14 @@
 Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting) 
 {
     // You can change the implementation of the constructor, but not the signature!
+
+    //init those v in the init list
+        //int iteration = -1
+        //dict<coalitionId,offeringPartyID> offers
+        //int lastOfferPartyId = -1
 }
+
+//DONT FORGET RULE OF 5
 
 State Party::getState() const
 {
@@ -38,6 +45,7 @@ void Party::step(Simulation &s)
     //else iterion++ 
 }
 
+//DONT FORGET TO DECLARE AS PRIVATE IN THE HEADER
 /*bool Party::recieveOffer(int coalitionId, int offeringPartyId){
     if(state == joined) -  return false;
     else 

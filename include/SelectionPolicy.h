@@ -1,6 +1,9 @@
 #pragma once
 
-class SelectionPolicy { };
+class SelectionPolicy {
+    public:
+        virtual void select() = 0;
+ };
 
 class MandatesSelectionPolicy: public SelectionPolicy{ };
 

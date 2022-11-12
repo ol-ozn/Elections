@@ -18,5 +18,5 @@ private:
     int mAgentId;
     int mPartyId;
     SelectionPolicy *mSelectionPolicy;
-    //int colalitionId
+    // int colalitionId;
 };
