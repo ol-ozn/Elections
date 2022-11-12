@@ -27,29 +27,10 @@ void Agent::step(Simulation &sim)
     // TODO: implement this method
     /*
     bool offerCompleted = false;
-    vector<partyID> sortedNeighbors = sortNeighbors(const reference sim.graph)
-
-    //explanation: the best party is the last index. if the offer is succesfull- break. if not- try the next best one (index--)
-    //if no candidate- do nothing
-    iterate sortedNeighbors as long as offerCOmpleted = false; 
-        offerCompleted = party.recieveOffer() (NEW FUNTION)
+    Party candidate = selectionPolicy.select(currAgent.partyId ,sim.getGraph()) 
+    
+    candidate.recieveOffer();
 
     */
 }
 
-
-//DONT FORGET TO DECLARE AS PRIVATE IN THE HEADER
-/*
-vector<partyId> Agent::sortNeighbors(Graph &graph) 
-{
-    vector<partyId> sortedNeighbors;
-    if(selectionPolicy = E) {
-        if(w.e == 0) skip it
-    } else {
-        
-    }
-
-
-}
-
-*/

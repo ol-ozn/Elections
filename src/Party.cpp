@@ -32,6 +32,8 @@ const string & Party::getName() const
     return mName;
 }
 
+//getOffersVector() const Function
+
 void Party::step(Simulation &s)
 {
     // TODO: implement this method
@@ -40,21 +42,18 @@ void Party::step(Simulation &s)
     //if(state == joinded) do nothing
     //if(state == collecting offers)
     //if(iteration == 3) join coalition according to joinPolicy
-        //join coaltion: if JP = L ->  s.getAgents(where agent.partyID == lastOfferPartyId).append(copy agent())
-        //else JP = M -> iterate over offers and take max mandates party
-    //else iterion++ 
+        // Agent chosenAgent = joinPolicy.join(offers)
+        // s.agents.append(copy of chosenAgent)
+    //else iteration++ 
 }
 
 //DONT FORGET TO DECLARE AS PRIVATE IN THE HEADER
-/*bool Party::recieveOffer(int coalitionId, int offeringPartyId){
-    if(state == joined) -  return false;
-    else 
-        if(offers.contains(coalitionId)) -  return false;
-        else
-            offers[coalitionId] = offeringPartyID
-            lastOfferPID = partyid
-            if(state == waiting)
-                state = collectingOffers
-            return true;
+/*void Party::recieveOffer(const Agent &agent){
+    
+    offers.append(agent)
+    
+    if(state == waiting)
+        state = collectingOffers
+    
 }
 */

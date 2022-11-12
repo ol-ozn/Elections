@@ -31,6 +31,5 @@ private:
     JoinPolicy *mJoinPolicy;
     State mState;
     // int iteration;
-    //dict<coalitionId,offeringPartyID> offers
-    //int lastOfferPartyId = -1
+    //Vector<Agent> offers
 };
