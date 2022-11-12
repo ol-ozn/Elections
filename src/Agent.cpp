@@ -18,4 +18,26 @@ int Agent::getPartyId() const
 void Agent::step(Simulation &sim)
 {
     // TODO: implement this method
+    /*
+    bool offerCompleted = false;
+    vector<partyID> sortedNeighbors = sortNeighbors(const reference sim.graph)
+    iterate neighbor parties by selection method as long as offerCOmpleted = false;
+        offerCompleted = party.recieveOffer() (NEW FUNTION)
+
+    */
 }
+
+/*
+vector<partyId> Agent::sortNeighbors(Graph &graph) 
+{
+    vector<partyId> sortedNeighbors;
+    if(selectionPolicy = E) {
+        //stopped here
+    } else {
+
+    }
+
+
+}
+
+*/

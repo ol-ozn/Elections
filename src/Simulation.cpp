@@ -8,6 +8,13 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
 void Simulation::step()
 {
     // TODO: implement this method
+    
+    //iterate over parties (vertices)
+    //party::step()
+
+    //iterate over agaents
+    //agent::step()
+
 }
 
 bool Simulation::shouldTerminate() const

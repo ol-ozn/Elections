@@ -28,4 +28,25 @@ const string & Party::getName() const
 void Party::step(Simulation &s)
 {
     // TODO: implement this method
+
+    //if(state == waiting) do nothing
+    //if(state == joinded) do nothing
+    //if(state == collecting offers)
+    //if(iteration == 3) join coalition according to joinPolicy
+        //join coaltion: if JP = L ->  s.getAgents(where agent.partyID == lastOfferPartyId).append(copy agent())
+        //else JP = M -> iterate over offers and take max mandates party
+    //else iterion++ 
 }
+
+/*bool Party::recieveOffer(int coalitionId, int offeringPartyId){
+    if(state == joined) -  return false;
+    else 
+        if(offers.contains(coalitionId)) -  return false;
+        else
+            offers[coalitionId] = offeringPartyID
+            lastOfferPID = partyid
+            if(state == waiting)
+                state = collectingOffers
+            return true;
+}
+*/

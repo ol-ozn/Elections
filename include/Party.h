@@ -30,4 +30,7 @@ private:
     int mMandates;
     JoinPolicy *mJoinPolicy;
     State mState;
+    //int iteration = -1
+    //dict<coalitionId,offeringPartyID> offers
+    //int lastOfferPartyId
 };
