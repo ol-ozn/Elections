@@ -13,6 +13,15 @@ void Simulation::step()
 bool Simulation::shouldTerminate() const
 {
     // TODO implement this method
+
+    //check if any coalition has 61 mandates --- IN SEPERATE PRIVATE FUNCTION
+    //iterate over colationsVetor(get func down bellow)
+    //iterate over each vector, sum mandates. if >= 61 , return true;
+    
+    //check if all parties are in state JOINED --- IN SEPERATE PRIVATE FUNCTION
+    //iterate over vertices
+    //if(currParty.state != Joined) return false;
+
     return true;
 }
 
@@ -36,5 +45,11 @@ const Party &Simulation::getParty(int partyId) const
 const vector<vector<int>> Simulation::getPartiesByCoalitions() const
 {
     // TODO: you MUST implement this method for getting proper output, read the documentation above.
-    return vector<vector<int>>();
+
+    //create vector<vector<int>> coalitions
+    //iterate over agents -
+    // if colaitionVector.length < coalitionId -> colationVector.append(new vector [append[agent0.Id,partyID]])
+    //else coalitionVector[coalitionId].append([cuurAgent,its'party])
+
+    return vector<vector<int>>(); //return coalitions
 }
