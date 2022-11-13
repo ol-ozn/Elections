@@ -12,9 +12,19 @@ void Simulation::step()
     //iterate over parties (vertices)
     //party::step()
 
+    vector<Party> parties = mGraph.getParties();
+    for(Party party : parties) 
+    {
+        party.step(*this);
+    }
+
     //iterate over agaents
     //agent::step()
 
+    for(Agent agent : mAgents) 
+    {
+        agent.step(*this);
+    }
 }
 
 bool Simulation::shouldTerminate() const
@@ -55,8 +65,22 @@ const vector<vector<int>> Simulation::getPartiesByCoalitions() const
 
     //create vector<vector<int>> coalitions
     //iterate over agents -
-    // if colaitionVector.length < coalitionId -> colationVector.append(new vector [append[agent0.Id,partyID]])
+    // if colaitionVector.length < coalitionId -> colationVector.append( vector [append[agent0.Id.partyID]])
     //else coalitionVector[coalitionId].append([cuurAgent,its'party])
 
-    return vector<vector<int>>(); //return coalitions
+    vector<vector<int>> coalitions;
+    for(Agent agent : mAgents) 
+    {
+        if(coalitions.size() <= agent.getCoalitionId()) 
+        {
+            vector<int> coalitionsParties = {agent.getPartyId()};
+            coalitions.push_back(coalitionsParties);
+        } 
+        else 
+        {
+            coalitions[agent.getCoalitionId()].push_back(agent.getPartyId());
+        }
+    }
+
+    return coalitions; //return coalitions
 }

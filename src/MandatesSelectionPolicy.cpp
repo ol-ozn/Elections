@@ -1,4 +1,4 @@
-#include "MandatesSelectionPolicy.h"
+#include "SelectionPolicy.h"
 
 //arguments: currAgent.partyId ,sim.getGraph()
 //returns: Party
@@ -11,4 +11,4 @@ void MandatesSelectionPolicy::select()
         sort the possibleParties by mandates amount
         return the possibleParties[last] = best
     */
-};
+}

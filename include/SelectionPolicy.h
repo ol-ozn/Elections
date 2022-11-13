@@ -5,6 +5,12 @@ class SelectionPolicy {
         virtual void select() = 0;
  };
 
-class MandatesSelectionPolicy: public SelectionPolicy{ };
+class MandatesSelectionPolicy: public SelectionPolicy{
+    public:
+        void select();
+ };
 
-class EdgeWeightSelectionPolicy: public SelectionPolicy{ };
+class EdgeWeightSelectionPolicy: public SelectionPolicy{
+    public:
+        void select();
+ };

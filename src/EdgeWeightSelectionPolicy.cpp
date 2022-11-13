@@ -1,4 +1,4 @@
-#include "EdgeWeightSelectionPolicy.h"
+#include "SelectionPolicy.h"
 
 //arguments: currAgent.partyId ,sim.getGraph()
 //returns: Party

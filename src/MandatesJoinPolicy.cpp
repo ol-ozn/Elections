@@ -1,4 +1,4 @@
-#include "MandatesJoinPolicy.h"
+#include "JoinPolicy.h"
 
 //argument: const &Vector<Agent>
 //returns: Agent
