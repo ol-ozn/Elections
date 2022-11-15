@@ -8,6 +8,10 @@
 using std::string;
 using std::vector;
 
+class Graph;
+class Agent;
+class Party;
+
 class Simulation
 {
 public:

@@ -1,16 +1,18 @@
 #pragma once
+#include "Graph.h"
+#include "Party.h"
 
 class SelectionPolicy {
     public:
-        virtual void select() = 0;
+        virtual Party select(int agentPartyId, Graph &graph) = 0;
  };
 
 class MandatesSelectionPolicy: public SelectionPolicy{
     public:
-        void select();
+        Party select(int agentPartyId, Graph &graph);
  };
 
 class EdgeWeightSelectionPolicy: public SelectionPolicy{
     public:
-        void select();
+        Party select(int agentPartyId, Graph &graph);
  };

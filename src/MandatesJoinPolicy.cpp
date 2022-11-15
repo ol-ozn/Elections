@@ -2,10 +2,11 @@
 
 //argument: const &Vector<Agent>
 //returns: Agent
-void MandatesJoinPolicy::join() 
+Agent MandatesJoinPolicy::join(const vector<Agent> &offers) 
 {
-    /*
-        //iterate over the vector, choose agent with maxiaml number of mandates
+    /* 
+        //iterate over the vector, choose agent with maxiaml number of mandates 
         return chosen agent
     */
+   
 }

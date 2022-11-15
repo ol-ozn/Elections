@@ -2,8 +2,10 @@
 
 #include <vector>
 #include "Graph.h"
+#include "Simulation.h"
 
 class SelectionPolicy;
+class Simulation;
 
 class Agent
 {
@@ -12,7 +14,7 @@ public:
 
     int getPartyId() const;
     int getId() const;
-    void step(Simulation &);
+    void step(Simulation &s);
     int getCoalitionId() const;
 
 private:

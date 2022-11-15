@@ -7,8 +7,6 @@ Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName
     //init those v in the init list
         //int iteration = -1
         //vector<agent> offers
-
-        
 }
 
 //DONT FORGET RULE OF 5
@@ -46,7 +44,20 @@ void Party::step(Simulation &s)
         // Agent chosenAgent = joinPolicy.join(offers)
         // s.agents.append(copy of chosenAgent)
     //else iteration++ 
-    // s;
+    
+    if(mState == Waiting)
+    {
+
+    } else if(mState == Joined)
+    {
+
+    } else //collecting offers
+    {
+        if(iteration == 3)
+        {
+            Agent chosenAgent = mJoinPolicy->join(offers);
+        }
+    }
     
 }
 

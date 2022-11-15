@@ -1,16 +1,20 @@
 #pragma once
+#include "Agent.h"
+#include <vector>
+
+using std::vector;
 
 class JoinPolicy {
     public:
-        virtual void join() = 0;
+        virtual Agent join(const vector<Agent> &offers) = 0;
 };
 
 class MandatesJoinPolicy : public JoinPolicy {
     public:
-        void join();
+        Agent join(const vector<Agent> &offers);
 };
 
 class LastOfferJoinPolicy : public JoinPolicy {
     public:
-        void join();
+        Agent join(const vector<Agent> &offers);
 };

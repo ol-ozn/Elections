@@ -37,5 +37,6 @@ void Agent::step(Simulation &sim)
     candidate.recieveOffer();
 
     */
+   
 }
 
