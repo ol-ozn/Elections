@@ -39,7 +39,29 @@ bool Simulation::shouldTerminate() const
     //iterate over vertices
     //if(currParty.state != Joined) return false;
 
-    return true;
+    return allPartiesJoined() || anyCoalitionOver60();
+}
+
+bool Simulation::allPartiesJoined() const
+{
+    return mAgents.size() == mGraph.getNumVertices();
+}
+
+bool Simulation::anyCoalitionOver60() const
+{
+    vector<vector<int>> coalitions = getPartiesByCoalitions();
+    
+    for(vector<int> coalition : coalitions)
+    {
+        int sum = 0;
+        for(int party : coalition)
+        {
+            sum += mGraph.getParty(party).getMandates();
+        }
+        if(sum >= 61)
+            return true;
+    }
+    return false;
 }
 
 const Graph &Simulation::getGraph() const

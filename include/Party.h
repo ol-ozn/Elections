@@ -30,6 +30,6 @@ private:
     int mMandates;
     JoinPolicy *mJoinPolicy;
     State mState;
-    // int iteration;
-    //Vector<Agent> offers
+    int iteration;
+    vector<Agent> offers;
 };

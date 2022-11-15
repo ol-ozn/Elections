@@ -20,8 +20,11 @@ public:
     const vector<Agent> &getAgents() const;
     const Party &getParty(int partyId) const;
     const vector<vector<int>> getPartiesByCoalitions() const;
-
+    
 private:
     Graph mGraph;
     vector<Agent> mAgents;
+    bool allPartiesJoined() const;
+    bool anyCoalitionOver60() const;
+    
 };
