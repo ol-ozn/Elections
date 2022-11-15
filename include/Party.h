@@ -1,8 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "Simulation.h"
-#include "JoinPolicy.h"
+#include "Agent.h"
 
 using std::string;
 using std::vector;

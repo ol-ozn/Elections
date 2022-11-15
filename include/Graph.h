@@ -4,6 +4,8 @@
 
 using std::vector;
 
+class Party;
+
 class Graph
 {
 public:

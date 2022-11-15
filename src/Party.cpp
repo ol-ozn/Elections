@@ -1,6 +1,6 @@
 #include "Party.h"
 
-Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), iteration(-1)
+Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), iteration(-1), offers()
 {
     // You can change the implementation of the constructor, but not the signature!
 
@@ -55,7 +55,7 @@ void Party::step(Simulation &s)
     {
         if(iteration == 3)
         {
-            Agent chosenAgent = mJoinPolicy->join(offers);
+            // Agent chosenAgent = mJoinPolicy->join(offers);
         }
     }
     
