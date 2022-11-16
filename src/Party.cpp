@@ -55,10 +55,18 @@ void Party::step(Simulation &s)
     {
         if(iteration == 3)
         {
-            // Agent chosenAgent = mJoinPolicy->join(offers);
+            //previous
+            // Agent &chosenAgent = mJoinPolicy->join(offers);
+
+            //current
+            //iterate over offers, make vector<int> agentsPartyIds, append by order
+            // dict<partyId,numMandates> parties -> the parties of offering agents
+
+            //int chosenAgentParyID = joinPolicy.join(agentsPartyIds,parties)
+            //Agent chosenAgent = agent that has chosenAgentPartyId
+            //s.agents.push_back(Agent(chosenAgent) -> copy)
         }
     }
-    
 }
 
 //DONT FORGET TO DECLARE AS PRIVATE IN THE HEADER
