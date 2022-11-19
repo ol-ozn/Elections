@@ -106,3 +106,8 @@ const vector<vector<int>> Simulation::getPartiesByCoalitions() const
 
     return coalitions; //return coalitions
 }
+
+void Simulation::agents_pushBack(const Agent &&agent)
+{
+    mAgents.push_back(agent);
+}

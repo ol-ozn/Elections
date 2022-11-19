@@ -8,7 +8,7 @@ using std::vector;
 
 class JoinPolicy;
 class Simulation;
-class Agent;
+// class Agent;
 
 enum State
 {
@@ -21,6 +21,12 @@ class Party
 {
 public:
     Party(int id, string name, int mandates, JoinPolicy *); 
+    Party(const Party &other); //copy constructor
+    Party(Party &&other); //move constructor
+    virtual ~Party(); //destructor
+    Party &operator=(const Party &other); //copy assignment operator
+    Party &operator=(Party &&other); //move assignment operator
+
 
     State getState() const;
     void setState(State state);

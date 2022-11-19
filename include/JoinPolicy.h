@@ -11,10 +11,10 @@ class JoinPolicy {
 
 class MandatesJoinPolicy : public JoinPolicy {
     public:
-        Agent join(const vector<Agent> &offers);
+        virtual Agent join(const vector<Agent> &offers);
 };
 
 class LastOfferJoinPolicy : public JoinPolicy {
     public:
-        Agent join(const vector<Agent> &offers);
+        virtual Agent join(const vector<Agent> &offers);
 };
