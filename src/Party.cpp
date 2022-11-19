@@ -97,7 +97,7 @@ void Party::step(Simulation &s)
     {
         if(iteration == 3)
         {
-            Agent chosenAgent = mJoinPolicy->join(offers);            
+            Agent chosenAgent = mJoinPolicy->join(offers, s.getGraph());            
             s.agents_pushBack(Agent(s.getGraph().getNumVertices(), mId, chosenAgent));            
             mState = Joined;
         }

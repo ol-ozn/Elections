@@ -2,10 +2,7 @@
 
 //argument: const &Vector<Agent>
 //returns: Agent
-Agent LastOfferJoinPolicy::join(const vector<Agent> &offers) 
+Agent LastOfferJoinPolicy::join(const vector<Agent> &offers, const Graph &graph) 
 {
-    /*
-        return vectore[last]
-    */
    return offers[offers.size() - 1];
 }
