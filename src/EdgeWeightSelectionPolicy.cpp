@@ -19,14 +19,9 @@ Party *EdgeWeightSelectionPolicy::select(int agentPartyId, int agentCoalitionId,
             if(graph.getEdgeWeight(agentPartyId, i) > heaviestEdge)
             {
                 Party party = graph.getParty(i);
-                if(isValidCandidate(party, agentCoalitionId))
-                    *candidate = party;
+                if(party.getState() != Joined && !party.coalitionOffered(agentCoalitionId))
+                    *candidate = party; //FAILS HERE, with tangarians
             }
     }
     return candidate;
-}
-
-bool EdgeWeightSelectionPolicy::isValidCandidate(Party &party, int coalitionId)
-{
-    std::cout << "EdgeWeightSelectionPolicy::isValidCandidate" << std::endl; //REMOVE
 }

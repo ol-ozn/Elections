@@ -1,6 +1,7 @@
 #include "Agent.h"
 #include "SelectionPolicy.h"
 #include "Simulation.h"
+#include <iostream>
 
 Agent::Agent(int agentId, int partyId, SelectionPolicy *selectionPolicy) : mAgentId(agentId), mPartyId(partyId), mSelectionPolicy(selectionPolicy), mCoalitionId(agentId)
 {
@@ -37,11 +38,12 @@ Agent::Agent(int agentId, int partyId, const Agent &other) : mAgentId(agentId), 
 
 Agent::~Agent()
 {
-    if(mSelectionPolicy)
-    {
-        delete mSelectionPolicy;
-        mSelectionPolicy = nullptr;
-    }
+    // if(mSelectionPolicy)
+    // {
+    //     delete mSelectionPolicy;
+    //     mSelectionPolicy = nullptr;
+    // }
+    std::cout << "~Agent()" << std::endl;
 }
 
 Agent &Agent::operator=(const Agent &other)

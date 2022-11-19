@@ -12,7 +12,7 @@ Party *MandatesSelectionPolicy::select(int agentPartyId, int agentCoalitionId ,c
         if(graph.getEdgeWeight(agentPartyId, i) > 0)
         {
             Party party = graph.getParty(i);
-            if(isValidCandidate(party, agentCoalitionId) && party.getMandates() > mostMandates)
+            if(party.getState() != Joined && !party.coalitionOffered(agentCoalitionId) && party.getMandates() > mostMandates)
             {
                 *candidate = party;
                 mostMandates = party.getMandates();
@@ -20,10 +20,4 @@ Party *MandatesSelectionPolicy::select(int agentPartyId, int agentCoalitionId ,c
         }
    }
    return candidate;
-}
-
-//MIGHT NOT CALL PAERNT FUNCTION
-bool MandatesSelectionPolicy::isValidCandidate(Party &party, int coalitionId)
-{
-    std::cout << "MandatesSelectionPolicy::isValidCandidate" << std::endl; //REMOVE
 }

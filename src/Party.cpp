@@ -1,6 +1,7 @@
 #include "Party.h"
 #include "JoinPolicy.h"
 #include "Simulation.h"
+#include <iostream>
 
 Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), iteration(-1), offers()
 {
@@ -36,11 +37,12 @@ Party::Party(Party &&other)
 }
 Party::~Party()
 {
-    if(mJoinPolicy)
-        {
-            delete mJoinPolicy;
-            // mJoinPolicy = nullptr;
-        }
+    // if(mJoinPolicy)
+    //     {
+    //         delete mJoinPolicy;
+    //         mJoinPolicy = nullptr;
+    //     }
+    std::cout << "~Party()" <<std::endl;
 }
 Party &Party::operator=(const Party &other)
 {
