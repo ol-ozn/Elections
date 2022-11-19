@@ -5,23 +5,20 @@
 //returns: Party
 Party *EdgeWeightSelectionPolicy::select(int agentPartyId, int agentCoalitionId, const Graph &graph)
 {
-    /* if edge > 0
-        Vectore<Party> possiblPartiesToOffer = fetch neighbors of party with partyId (copy)
-        check validity of offer to the party (check state, check if colalition already offered..)
-        if invalid -> delete from possible parties to offer
-        sort the possibleParties by edge weight
-        return the possibleParties[last] = best
-  */
     Party *candidate = nullptr;
     int heaviestEdge = 0;
     for(int i = 0; i < graph.getNumVertices(); i++)
-    {
-            if(graph.getEdgeWeight(agentPartyId, i) > heaviestEdge)
+    {       
+        int currEdgeWeight = graph.getEdgeWeight(agentPartyId, i);
+        if(currEdgeWeight > heaviestEdge)
+        {
+            Party party = graph.getParty(i);
+            if(party.getState() != Joined && !party.coalitionOffered(agentCoalitionId))
             {
-                Party party = graph.getParty(i);
-                if(party.getState() != Joined && !party.coalitionOffered(agentCoalitionId))
-                    *candidate = party; //FAILS HERE, with tangarians
+                heaviestEdge = currEdgeWeight;
+                candidate = &party;
             }
+        }
     }
     return candidate;
 }

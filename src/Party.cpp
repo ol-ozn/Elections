@@ -6,13 +6,7 @@
 Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), iteration(-1), offers()
 {
     // You can change the implementation of the constructor, but not the signature!
-
-    //init those v in the init list
-        //int iteration = -1
-        //vector<agent> offers
 }
-
-//DONT FORGET RULE OF 5
 
 Party::Party(const Party &other)
 {
@@ -37,12 +31,14 @@ Party::Party(Party &&other)
 }
 Party::~Party()
 {
-    // if(mJoinPolicy)
-    //     {
-    //         delete mJoinPolicy;
-    //         mJoinPolicy = nullptr;
-    //     }
     std::cout << "~Party()" <<std::endl;
+    std::cout << mName <<std::endl;
+    std::cout << this <<std::endl;
+    if(mJoinPolicy)
+    {
+        delete mJoinPolicy;
+        mJoinPolicy = nullptr;
+    }
 }
 Party &Party::operator=(const Party &other)
 {
@@ -95,7 +91,7 @@ const string & Party::getName() const
 
 void Party::step(Simulation &s)
 {
-    if(mState == Waiting)
+    if(mState == Waiting) //collecting offers!
     {
         if(iteration == 3)
         {
@@ -113,10 +109,10 @@ void Party::step(Simulation &s)
 void Party::recieveOffer(const Agent &agent)
 {
     
-    offers.push_back(agent);
-    
     if(mState == Waiting)
         mState = CollectingOffers;
+
+    offers.push_back(agent); //
 }
 
 
