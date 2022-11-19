@@ -93,49 +93,38 @@ const string & Party::getName() const
 
 void Party::step(Simulation &s)
 {
-    // TODO: implement this method
-
-    //if(state == waiting) do nothing
-    //if(state == joinded) do nothing
-    //if(state == collecting offers)
-    //if(iteration == 3) join coalition according to joinPolicy
-        // Agent chosenAgent = joinPolicy.join(offers)
-        // s.agents.append(copy of chosenAgent)
-    //else iteration++ 
-    
     if(mState == Waiting)
-    {
-
-    } 
-    else if(mState == Joined)
-    {
-
-    } 
-    else //collecting offers
     {
         if(iteration == 3)
         {
-            //previous
-            Agent chosenAgent = mJoinPolicy->join(offers);
-
-            //int chosenAgentParyID = joinPolicy.join(agentsPartyIds,parties)
-            //Agent chosenAgent = agent that has chosenAgentPartyId
-            //s.agents.push_back(Agent(chosenAgent) -> copy)
-            
-            s.agents_pushBack(Agent(s.getGraph().getNumVertices(), mId, chosenAgent));
-            //STOPPED HEREEEEEEE
-            
+            Agent chosenAgent = mJoinPolicy->join(offers);            
+            s.agents_pushBack(Agent(s.getGraph().getNumVertices(), mId, chosenAgent));            
+            mState = Joined;
+        }
+        else
+        {
+            iteration++;
         }
     }
 }
 
-//DONT FORGET TO DECLARE AS PRIVATE IN THE HEADER
-/*void Party::recieveOffer(const Agent &agent){
+void Party::recieveOffer(const Agent &agent)
+{
     
-    offers.append(agent)
+    offers.push_back(agent);
     
-    if(state == waiting)
-        state = collectingOffers
-    
+    if(mState == Waiting)
+        mState = CollectingOffers;
 }
-*/
+
+
+bool Party::coalitionOffered(int coalitionId)
+{
+    for(Agent agent : offers)
+    {
+        if(agent.getCoalitionId() == coalitionId)
+            return true;
+    }
+    return false;
+}
+

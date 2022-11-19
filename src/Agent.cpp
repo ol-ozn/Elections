@@ -1,5 +1,6 @@
 #include "Agent.h"
 #include "SelectionPolicy.h"
+#include "Simulation.h"
 
 Agent::Agent(int agentId, int partyId, SelectionPolicy *selectionPolicy) : mAgentId(agentId), mPartyId(partyId), mSelectionPolicy(selectionPolicy), mCoalitionId(agentId)
 {
@@ -94,6 +95,7 @@ void Agent::step(Simulation &sim)
     candidate.recieveOffer();
 
     */
-   
+    Party candidate = mSelectionPolicy->select(mPartyId, mCoalitionId, sim.getGraph()); 
+    candidate.recieveOffer(*this);
 }
 

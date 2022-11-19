@@ -2,7 +2,7 @@
 
 //arguments: currAgent.partyId ,sim.getGraph()
 //returns: Party
-Party EdgeWeightSelectionPolicy::select(int agentPartyId, Graph &graph)
+Party EdgeWeightSelectionPolicy::select(int agentPartyId, int agentCoalitionId, const Graph &graph)
 {
     /* if edge > 0
         Vectore<Party> possiblPartiesToOffer = fetch neighbors of party with partyId (copy)

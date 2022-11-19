@@ -4,15 +4,16 @@
 
 class SelectionPolicy {
     public:
-        virtual Party select(int agentPartyId, Graph &graph) = 0;
+        virtual Party select(int agentPartyId, int agentCoalitionId, const Graph &graph) = 0;
+        bool isValidCandidate(Party &party, int coalitionId);
  };
 
 class MandatesSelectionPolicy: public SelectionPolicy{
     public:
-        Party select(int agentPartyId, Graph &graph);
+        Party select(int agentPartyId, int agentCoalitionId, const Graph &graph);
  };
 
 class EdgeWeightSelectionPolicy: public SelectionPolicy{
     public:
-        Party select(int agentPartyId, Graph &graph);
+        Party select(int agentPartyId, int agentCoalitionId, const Graph &graph);
  };
