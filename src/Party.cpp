@@ -39,7 +39,7 @@ Party::~Party()
     if(mJoinPolicy)
         {
             delete mJoinPolicy;
-            mJoinPolicy = nullptr;
+            // mJoinPolicy = nullptr;
         }
 }
 Party &Party::operator=(const Party &other)
