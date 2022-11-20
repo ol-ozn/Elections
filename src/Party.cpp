@@ -121,7 +121,8 @@ void Party::step(Simulation &s)
     {
         if(iteration == 3)
         {
-            Agent chosenAgent = mJoinPolicy->join(offers, s.getGraph());            
+            // Agent chosenAgent = mJoinPolicy->join(offers, s.getGraph());    
+            Agent chosenAgent = s.getAgents()[mJoinPolicy->join(offers, s.getGraph())];
             // s.agents_pushBack(Agent(s.getGraph().getNumVertices(), mId, chosenAgent));   //agent id is wrong, partyId is wrong too. coalitionId correct. selection policy is DEEP COPIED!         
             std::cout << mName << " id is: " << mId << std::endl;
             s.agents_pushBack(Agent(s.getAgents().size(), mId, chosenAgent));    

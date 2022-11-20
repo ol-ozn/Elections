@@ -8,15 +8,15 @@ class Graph;
 
 class JoinPolicy {
     public:
-        virtual Agent join(const vector<Agent> &offers, const Graph &graph) = 0;
+        virtual int join(const vector<Agent> &offers, const Graph &graph) = 0;
 };
 
 class MandatesJoinPolicy : public JoinPolicy {
     public:
-        virtual Agent join(const vector<Agent> &offers, const Graph &graph);
+        virtual int join(const vector<Agent> &offers, const Graph &graph);
 };
 
 class LastOfferJoinPolicy : public JoinPolicy {
     public:
-        virtual Agent join(const vector<Agent> &offers, const Graph &graph);
+        virtual int join(const vector<Agent> &offers, const Graph &graph);
 };
