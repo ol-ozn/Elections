@@ -92,5 +92,6 @@ void Agent::step(Simulation &sim)
     Party *candidate = mSelectionPolicy->select(mPartyId, mCoalitionId, sim.getGraph()); 
     if(candidate)
         candidate->recieveOffer(*this);
+    
 }
 

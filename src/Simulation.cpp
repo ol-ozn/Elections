@@ -1,4 +1,5 @@
 #include "Simulation.h"
+#include <iostream>
 
 Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgents(agents) 
 {
@@ -7,6 +8,7 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
 
 void Simulation::step()
 {
+    std::cout << "simulation:step" << std::endl;
     // vector<Party> parties = mGraph.getParties();
     for(Party party : mGraph.getParties()) 
     {
