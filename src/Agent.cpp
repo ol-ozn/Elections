@@ -91,10 +91,10 @@ void Agent::step(Simulation &sim)
 {
     // Party *candidate = mSelectionPolicy->select(mPartyId, mCoalitionId, sim.getGraph()); 
     int candidateId = mSelectionPolicy->select(mPartyId, mCoalitionId, sim.getGraph()); 
-    const Party &party = sim.getParty(candidateId);
-    Party party2 = party;
+    // const Party &party = sim.getParty(candidateId);
+    Party &party3 = sim.getParty2(candidateId);
+    // Party party2 = party;
     if(candidateId > -1)
-        party2.recieveOffer(*this);
-    
+        party3.recieveOffer(*this);
 }
 

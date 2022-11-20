@@ -21,6 +21,7 @@ public:
     const Party &getParty(int partyId) const;
     const vector<vector<int>> getPartiesByCoalitions() const;
     void agents_pushBack(const Agent &&agent);
+    Party &getParty2(int partyId);
     
 private:
     Graph mGraph;

@@ -15,7 +15,7 @@ public:
     int getNumVertices() const;
     const Party &getParty(int partyId) const;
     const vector<Party> &getParties() const;
-
+    Party &getParty2(int partyId);
 
 private:
     vector<Party> mVertices;

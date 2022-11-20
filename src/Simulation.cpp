@@ -10,7 +10,7 @@ void Simulation::step()
 {
     std::cout << "simulation:step" << std::endl;
     // vector<Party> parties = mGraph.getParties();
-    for(Party party : mGraph.getParties()) 
+    for(Party party : mGraph.getParties()) //party shallow copies, fix: change to explicit for loop
     {
         party.step(*this);
     }
@@ -61,6 +61,11 @@ const vector<Agent> &Simulation::getAgents() const
 const Party &Simulation::getParty(int partyId) const
 {
     return mGraph.getParty(partyId);
+}
+
+ Party &Simulation::getParty2(int partyId) 
+{
+    return mGraph.getParty2(partyId);
 }
 
 /// This method returns a "coalition" vector, where each element is a vector of party IDs in the coalition.
