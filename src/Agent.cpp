@@ -89,9 +89,12 @@ SelectionPolicy *Agent::getSelectionPolicy() const
 
 void Agent::step(Simulation &sim)
 {
-    Party *candidate = mSelectionPolicy->select(mPartyId, mCoalitionId, sim.getGraph()); 
-    if(candidate)
-        candidate->recieveOffer(*this);
+    // Party *candidate = mSelectionPolicy->select(mPartyId, mCoalitionId, sim.getGraph()); 
+    int candidateId = mSelectionPolicy->select(mPartyId, mCoalitionId, sim.getGraph()); 
+    const Party &party = sim.getParty(candidateId);
+    Party party2 = party;
+    if(candidateId > -1)
+        party2.recieveOffer(*this);
     
 }
 

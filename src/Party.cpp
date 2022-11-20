@@ -3,10 +3,11 @@
 #include "Simulation.h"
 #include <iostream>
 #include "SelectionPolicy.h" // ROMOVE
-Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), iteration(-1), offers()
+Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), iteration(-1)
 {
     // You can change the implementation of the constructor, but not the signature!
     std::cout << "constructor: " << mName << mJoinPolicy << std::endl; 
+
 }
 
 Party::Party(const Party &other)
@@ -136,6 +137,7 @@ void Party::recieveOffer(const Agent &agent)
     if(mState == Waiting)
         mState = CollectingOffers;
 
+    
     offers.push_back(agent); //
 }
 

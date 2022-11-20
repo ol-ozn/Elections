@@ -16,6 +16,7 @@ public:
     const Party &getParty(int partyId) const;
     const vector<Party> &getParties() const;
 
+
 private:
     vector<Party> mVertices;
     vector<vector<int>> mEdges;

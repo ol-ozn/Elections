@@ -3,10 +3,11 @@
 
 //arguments: currAgent.partyId ,sim.getGraph()
 //returns: Party
-Party *MandatesSelectionPolicy::select(int agentPartyId, int agentCoalitionId ,const Graph &graph)
+int MandatesSelectionPolicy::select(int agentPartyId, int agentCoalitionId ,const Graph &graph)
 {
    Party *candidate = nullptr;
    int mostMandates = -1;
+   int candidateId = -1;
    for(int i = 0; i < graph.getNumVertices(); i++)
    {
         if(graph.getEdgeWeight(agentPartyId, i) > 0)
@@ -16,8 +17,9 @@ Party *MandatesSelectionPolicy::select(int agentPartyId, int agentCoalitionId ,c
             {
                 *candidate = party;
                 mostMandates = party.getMandates();
+                candidateId = i;
             }
         }
    }
-   return candidate;
+   return candidateId;
 }
