@@ -1,7 +1,6 @@
 #include "Party.h"
 #include "JoinPolicy.h"
 #include "Simulation.h"
-#include <iostream>
 
 Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), iteration(0)
 {
@@ -99,7 +98,6 @@ const string & Party::getName() const
 
 void Party::step(Simulation &s)
 {
-    std::cout << mName << " iteration num = " << iteration << " state = " << mState << " has offers: " << offers.empty()<< std::endl;
     if(mState == CollectingOffers) //collecting offers!
     {
         if(iteration == 2)
