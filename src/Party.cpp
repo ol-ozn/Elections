@@ -2,12 +2,10 @@
 #include "JoinPolicy.h"
 #include "Simulation.h"
 #include <iostream>
-#include "SelectionPolicy.h" // ROMOVE
-Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), iteration(-1)
+
+Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), iteration(0)
 {
     // You can change the implementation of the constructor, but not the signature!
-    // std::cout << "constructor: " << mName << mJoinPolicy << std::endl; 
-
 }
 
 Party::Party(const Party &other)
@@ -18,20 +16,14 @@ Party::Party(const Party &other)
     mState = other.mState;
     iteration = other.iteration;
     offers = other.offers;
-    // std::cout << "copy const: " << mName << " previous address: " << mJoinPolicy << std::endl; 
-    // mJoinPolicy = dynamic_cast<JoinPolicy*>(other.mJoinPolicy); // A = new B(); --MIGHT FAIL
     if(dynamic_cast<MandatesJoinPolicy*>(other.mJoinPolicy))
     {
-        // std::cout<< "dynamic type is mandates " << std::endl;
         mJoinPolicy = new MandatesJoinPolicy();
     }
     else 
     {
-        // std::cout<< "dynamic type is last offer " << std::endl;
         mJoinPolicy = new LastOfferJoinPolicy();
     }
-    // std::cout << "copy const: " << mName << " new address: " << mJoinPolicy << std::endl; 
-
 }
 Party::Party(Party &&other)
 {
@@ -43,21 +35,15 @@ Party::Party(Party &&other)
     offers = other.offers;
     mJoinPolicy = other.mJoinPolicy;
     other.mJoinPolicy = nullptr;
-    // std::cout << "move constructor: " << mName << this <<std::endl;
-
 }
 Party::~Party()
 {
-    // std::cout << "~Party()" <<std::endl;
-    // std::cout << mName <<std::endl;
-    // std::cout << "trying to delete: " << mName << mJoinPolicy <<std::endl;
     offers.clear();
     if(mJoinPolicy)
     {
         delete mJoinPolicy;
         mJoinPolicy = nullptr;
     }
-    // std::cout << "exiting ~party()  address: " << mJoinPolicy << std::endl;
 }
 Party &Party::operator=(const Party &other)
 {
@@ -72,7 +58,6 @@ Party &Party::operator=(const Party &other)
         
         *mJoinPolicy = *other.mJoinPolicy;
     }
-    // std::cout << "assignment op: " << mName << "address: " << mJoinPolicy << std::endl; 
 
     return *this;
 }
@@ -88,7 +73,6 @@ Party &Party::operator=(Party &&other)
         delete mJoinPolicy;
     mJoinPolicy = other.mJoinPolicy;
     other.mJoinPolicy = nullptr;
-    // std::cout << "move operator: " << mName << this <<std::endl;
     return *this;
 }
 
@@ -113,18 +97,14 @@ const string & Party::getName() const
     return mName;
 }
 
-//getOffersVector() const Function
-
 void Party::step(Simulation &s)
 {
+    std::cout << mName << " iteration num = " << iteration << " state = " << mState << " has offers: " << offers.empty()<< std::endl;
     if(mState == CollectingOffers) //collecting offers!
     {
-        if(iteration == 3)
+        if(iteration == 2)
         {
-            // Agent chosenAgent = mJoinPolicy->join(offers, s.getGraph());    
             Agent chosenAgent = s.getAgents()[mJoinPolicy->join(offers, s.getGraph())];
-            // s.agents_pushBack(Agent(s.getGraph().getNumVertices(), mId, chosenAgent));   //agent id is wrong, partyId is wrong too. coalitionId correct. selection policy is DEEP COPIED!         
-            std::cout << mName << " id is: " << mId << std::endl;
             s.agents_pushBack(Agent(s.getAgents().size(), mId, chosenAgent));    
             mState = Joined;
         }
@@ -141,8 +121,7 @@ void Party::recieveOffer(const Agent &agent)
     if(mState == Waiting)
         mState = CollectingOffers;
 
-    
-    offers.push_back(agent); //
+    offers.push_back(agent); 
 }
 
 

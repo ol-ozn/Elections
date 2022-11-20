@@ -8,13 +8,6 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
 
 void Simulation::step()
 {
-    std::cout << "simulation:step" << std::endl;
-    // vector<Party> parties = mGraph.getParties();
-    // for(Party party : mGraph.getParties()) //party shallow copies, fix: change to explicit for loop
-    // {
-    //     party.step(*this);
-    // }
-
     for(int i = 0; i < mGraph.getParties().size(); i++)
     {
         getParty2(i).step(*this);
@@ -24,10 +17,6 @@ void Simulation::step()
     {
         agent.step(*this);
     }
-    // for(int j = 0; j < mAgents.size(); j++)
-    // {
-        
-    // }
 }
 
 bool Simulation::shouldTerminate() const

@@ -15,7 +15,6 @@ public:
 
     void step();
     bool shouldTerminate() const;
-
     const Graph &getGraph() const;
     const vector<Agent> &getAgents() const;
     const Party &getParty(int partyId) const;
@@ -28,5 +27,4 @@ private:
     vector<Agent> mAgents;
     bool allPartiesJoined() const;
     bool anyCoalitionOver60() const;
-    
 };
