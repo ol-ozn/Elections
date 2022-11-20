@@ -20,7 +20,7 @@ Agent MandatesJoinPolicy::join(const vector<Agent> &offers, const Graph &graph)
         int currMandates = graph.getParty(candidate.getPartyId()).getMandates();
         if(currMandates > mostMandates)
         {
-            *chosenAgent = candidate;
+            *chosenAgent = candidate; //FAILS HERE
             mostMandates = currMandates;
         }
     }

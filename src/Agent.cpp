@@ -17,8 +17,18 @@ Agent::Agent(const Agent &other)
 {
     mAgentId = other.getId();
     mPartyId = other.getPartyId();
-    mSelectionPolicy = dynamic_cast<SelectionPolicy*>(other.getSelectionPolicy()); // A = new B(); --MIGHT FAIL
+    // mSelectionPolicy = dynamic_cast<SelectionPolicy*>(other.getSelectionPolicy()); // A = new B(); --MIGHT FAIL
     mCoalitionId = other.getCoalitionId();
+    if(dynamic_cast<MandatesSelectionPolicy*>(other.mSelectionPolicy))
+    {
+        // std::cout<< "dynamic type is mandates " << std::endl;
+        mSelectionPolicy = new MandatesSelectionPolicy();
+    }
+    else 
+    {
+        // std::cout<< "dynamic type is last offer " << std::endl;
+        mSelectionPolicy = new EdgeWeightSelectionPolicy();
+    }
 }
 
 Agent::Agent(Agent &&other)
@@ -32,7 +42,18 @@ Agent::Agent(Agent &&other)
 
 Agent::Agent(int agentId, int partyId, const Agent &other) : mAgentId(agentId), mPartyId(mPartyId)
 {
-    mSelectionPolicy = dynamic_cast<SelectionPolicy*>(other.getSelectionPolicy());
+    // mSelectionPolicy = dynamic_cast<SelectionPolicy*>(other.getSelectionPolicy());
+    if(dynamic_cast<MandatesSelectionPolicy*>(other.mSelectionPolicy))
+    {
+        // std::cout<< "dynamic type is mandates " << std::endl;
+        mSelectionPolicy = new MandatesSelectionPolicy();
+    }
+    else 
+    {
+        // std::cout<< "dynamic type is last offer " << std::endl;
+        mSelectionPolicy = new EdgeWeightSelectionPolicy();
+    }
+    mPartyId = partyId;
     mCoalitionId = other.mCoalitionId;
 }
 

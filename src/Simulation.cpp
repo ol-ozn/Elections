@@ -10,15 +10,24 @@ void Simulation::step()
 {
     std::cout << "simulation:step" << std::endl;
     // vector<Party> parties = mGraph.getParties();
-    for(Party party : mGraph.getParties()) //party shallow copies, fix: change to explicit for loop
+    // for(Party party : mGraph.getParties()) //party shallow copies, fix: change to explicit for loop
+    // {
+    //     party.step(*this);
+    // }
+
+    for(int i = 0; i < mGraph.getParties().size(); i++)
     {
-        party.step(*this);
+        getParty2(i).step(*this);
     }
 
     for(Agent agent : mAgents) 
     {
         agent.step(*this);
     }
+    // for(int j = 0; j < mAgents.size(); j++)
+    // {
+        
+    // }
 }
 
 bool Simulation::shouldTerminate() const
