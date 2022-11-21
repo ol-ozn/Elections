@@ -1,18 +1,14 @@
 #include "Agent.h"
 #include "SelectionPolicy.h"
 #include "Simulation.h"
-#include <iostream>
 
 Agent::Agent(int agentId, int partyId, SelectionPolicy *selectionPolicy) : mAgentId(agentId), mPartyId(partyId), mSelectionPolicy(selectionPolicy), mCoalitionId(agentId)
 {
     // You can change the implementation of the constructor, but not the signature!
 }
 
-Agent::Agent(const Agent &other) : mAgentId(other.mAgentId), mPartyId(other.mPartyId), mCoalitionId(other.mCoalitionId)
+Agent::Agent(const Agent &other) : mAgentId(other.mAgentId), mPartyId(other.mPartyId), mSelectionPolicy(),mCoalitionId(other.mCoalitionId)
 {
-    // mAgentId = other.getId();
-    // mPartyId = other.getPartyId();
-    // mCoalitionId = other.getCoalitionId();
     if(dynamic_cast<MandatesSelectionPolicy*>(other.mSelectionPolicy))
     {
         mSelectionPolicy = new MandatesSelectionPolicy();
@@ -32,7 +28,7 @@ Agent::Agent(Agent &&other) : mAgentId(other.mAgentId), mPartyId(other.mPartyId)
     other.mSelectionPolicy = nullptr;
 }
 
-Agent::Agent(int agentId, int partyId, const Agent &other) : mAgentId(agentId), mPartyId(partyId), mCoalitionId(other.mCoalitionId)
+Agent::Agent(int agentId, int partyId, const Agent &other) : mAgentId(agentId), mPartyId(partyId), mSelectionPolicy(), mCoalitionId(other.mCoalitionId)
 {
     if(dynamic_cast<MandatesSelectionPolicy*>(other.mSelectionPolicy))
     {
@@ -42,8 +38,6 @@ Agent::Agent(int agentId, int partyId, const Agent &other) : mAgentId(agentId), 
     {
         mSelectionPolicy = new EdgeWeightSelectionPolicy();
     }
-    // mPartyId = partyId;
-    // mCoalitionId = other.mCoalitionId;
 }
 
 Agent::~Agent()

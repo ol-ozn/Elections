@@ -8,7 +8,7 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
 
 void Simulation::step()
 {
-    for(int i = 0; i < mGraph.getParties().size(); i++)
+    for(int i = 0; i < (signed int)mGraph.getParties().size(); i++)
     {
         getParty2(i).step(*this);
     }
@@ -26,7 +26,7 @@ bool Simulation::shouldTerminate() const
 
 bool Simulation::allPartiesJoined() const
 {
-    return mAgents.size() == mGraph.getNumVertices();
+    return (signed int)mAgents.size() == mGraph.getNumVertices();
 }
 
 bool Simulation::anyCoalitionOver60() const
@@ -73,7 +73,7 @@ const vector<vector<int>> Simulation::getPartiesByCoalitions() const
     vector<vector<int>> coalitions;
     for(Agent agent : mAgents) 
     {
-        if(coalitions.size() <= agent.getCoalitionId()) 
+        if((signed int)coalitions.size() <= agent.getCoalitionId()) 
         {
             vector<int> coalitionsParties = {agent.getPartyId()};
             coalitions.push_back(coalitionsParties);

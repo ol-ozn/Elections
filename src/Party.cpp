@@ -7,14 +7,8 @@ Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName
     // You can change the implementation of the constructor, but not the signature!
 }
 
-Party::Party(const Party &other) : mId(other.mId), mName(other.mName), mMandates(other.mMandates), mState(other.mState), iteration(other.iteration), offers(other.offers)
+Party::Party(const Party &other) : mId(other.mId), mName(other.mName), mMandates(other.mMandates), mJoinPolicy(), mState(other.mState), iteration(other.iteration) ,offers(other.offers)
 {
-    // mId = other.mId;
-    // mName = other.mName;
-    // mMandates = other.mMandates;
-    // mState = other.mState;
-    // iteration = other.iteration;
-    // offers = other.offers;
     if(dynamic_cast<MandatesJoinPolicy*>(other.mJoinPolicy))
     {
         mJoinPolicy = new MandatesJoinPolicy();
@@ -24,15 +18,8 @@ Party::Party(const Party &other) : mId(other.mId), mName(other.mName), mMandates
         mJoinPolicy = new LastOfferJoinPolicy();
     }
 }
-Party::Party(Party &&other) : mId(other.mId), mName(other.mName), mMandates(other.mMandates), mState(other.mState), iteration(other.iteration), offers(other.offers), mJoinPolicy(other.mJoinPolicy)
+Party::Party(Party &&other) : mId(other.mId), mName(other.mName), mMandates(other.mMandates),  mJoinPolicy(other.mJoinPolicy), mState(other.mState), iteration(other.iteration), offers(other.offers)
 {
-    // mId = other.mId;
-    // mName = other.mName;
-    // mMandates = other.mMandates;
-    // mState = other.mState;
-    // iteration = other.iteration;
-    // offers = other.offers;
-    // mJoinPolicy = other.mJoinPolicy;
     other.mJoinPolicy = nullptr;
 }
 Party::~Party()

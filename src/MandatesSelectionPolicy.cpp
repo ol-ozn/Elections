@@ -20,7 +20,4 @@ int MandatesSelectionPolicy::select(int agentPartyId, int agentCoalitionId ,cons
    return candidateId;
 }
 
-SelectionPolicy::~SelectionPolicy()
-{
-    
-}
+SelectionPolicy::~SelectionPolicy() {}
