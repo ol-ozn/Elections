@@ -8,11 +8,11 @@ Agent::Agent(int agentId, int partyId, SelectionPolicy *selectionPolicy) : mAgen
     // You can change the implementation of the constructor, but not the signature!
 }
 
-Agent::Agent(const Agent &other)
+Agent::Agent(const Agent &other) : mAgentId(other.mAgentId), mPartyId(other.mPartyId), mCoalitionId(other.mCoalitionId)
 {
-    mAgentId = other.getId();
-    mPartyId = other.getPartyId();
-    mCoalitionId = other.getCoalitionId();
+    // mAgentId = other.getId();
+    // mPartyId = other.getPartyId();
+    // mCoalitionId = other.getCoalitionId();
     if(dynamic_cast<MandatesSelectionPolicy*>(other.mSelectionPolicy))
     {
         mSelectionPolicy = new MandatesSelectionPolicy();
@@ -23,16 +23,16 @@ Agent::Agent(const Agent &other)
     }
 }
 
-Agent::Agent(Agent &&other)
+Agent::Agent(Agent &&other) : mAgentId(other.mAgentId), mPartyId(other.mPartyId), mCoalitionId(other.mCoalitionId), mSelectionPolicy(other.mSelectionPolicy)
 {
-    mAgentId = other.getId();
-    mPartyId = other.getPartyId();
-    mCoalitionId = other.getCoalitionId();
-    mSelectionPolicy = other.mSelectionPolicy;
+    // mAgentId = other.getId();
+    // mPartyId = other.getPartyId();
+    // mCoalitionId = other.getCoalitionId();
+    // mSelectionPolicy = other.mSelectionPolicy;
     other.mSelectionPolicy = nullptr;
 }
 
-Agent::Agent(int agentId, int partyId, const Agent &other) : mAgentId(agentId), mPartyId(mPartyId)
+Agent::Agent(int agentId, int partyId, const Agent &other) : mAgentId(agentId), mPartyId(partyId), mCoalitionId(other.mCoalitionId)
 {
     if(dynamic_cast<MandatesSelectionPolicy*>(other.mSelectionPolicy))
     {
@@ -42,8 +42,8 @@ Agent::Agent(int agentId, int partyId, const Agent &other) : mAgentId(agentId), 
     {
         mSelectionPolicy = new EdgeWeightSelectionPolicy();
     }
-    mPartyId = partyId;
-    mCoalitionId = other.mCoalitionId;
+    // mPartyId = partyId;
+    // mCoalitionId = other.mCoalitionId;
 }
 
 Agent::~Agent()

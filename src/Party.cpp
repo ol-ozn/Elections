@@ -2,19 +2,19 @@
 #include "JoinPolicy.h"
 #include "Simulation.h"
 
-Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), iteration(0)
+Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), iteration(0), offers()
 {
     // You can change the implementation of the constructor, but not the signature!
 }
 
-Party::Party(const Party &other)
+Party::Party(const Party &other) : mId(other.mId), mName(other.mName), mMandates(other.mMandates), mState(other.mState), iteration(other.iteration), offers(other.offers)
 {
-    mId = other.mId;
-    mName = other.mName;
-    mMandates = other.mMandates;
-    mState = other.mState;
-    iteration = other.iteration;
-    offers = other.offers;
+    // mId = other.mId;
+    // mName = other.mName;
+    // mMandates = other.mMandates;
+    // mState = other.mState;
+    // iteration = other.iteration;
+    // offers = other.offers;
     if(dynamic_cast<MandatesJoinPolicy*>(other.mJoinPolicy))
     {
         mJoinPolicy = new MandatesJoinPolicy();
@@ -24,15 +24,15 @@ Party::Party(const Party &other)
         mJoinPolicy = new LastOfferJoinPolicy();
     }
 }
-Party::Party(Party &&other)
+Party::Party(Party &&other) : mId(other.mId), mName(other.mName), mMandates(other.mMandates), mState(other.mState), iteration(other.iteration), offers(other.offers), mJoinPolicy(other.mJoinPolicy)
 {
-    mId = other.mId;
-    mName = other.mName;
-    mMandates = other.mMandates;
-    mState = other.mState;
-    iteration = other.iteration;
-    offers = other.offers;
-    mJoinPolicy = other.mJoinPolicy;
+    // mId = other.mId;
+    // mName = other.mName;
+    // mMandates = other.mMandates;
+    // mState = other.mState;
+    // iteration = other.iteration;
+    // offers = other.offers;
+    // mJoinPolicy = other.mJoinPolicy;
     other.mJoinPolicy = nullptr;
 }
 Party::~Party()
