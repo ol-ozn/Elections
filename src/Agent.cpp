@@ -21,10 +21,6 @@ Agent::Agent(const Agent &other) : mAgentId(other.mAgentId), mPartyId(other.mPar
 
 Agent::Agent(Agent &&other) : mAgentId(other.mAgentId), mPartyId(other.mPartyId), mSelectionPolicy(other.mSelectionPolicy), mCoalitionId(other.mCoalitionId)
 {
-    // mAgentId = other.getId();
-    // mPartyId = other.getPartyId();
-    // mCoalitionId = other.getCoalitionId();
-    // mSelectionPolicy = other.mSelectionPolicy;
     other.mSelectionPolicy = nullptr;
 }
 
