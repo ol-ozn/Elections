@@ -17,5 +17,3 @@ int MandatesJoinPolicy::join(const vector<Agent> &offers, const Graph &graph)
 
     return candidateId;
 }
-
-JoinPolicy::~JoinPolicy() = default;

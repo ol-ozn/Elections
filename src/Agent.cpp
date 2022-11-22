@@ -19,7 +19,7 @@ Agent::Agent(const Agent &other) : mAgentId(other.mAgentId), mPartyId(other.mPar
     }
 }
 
-Agent::Agent(Agent &&other) : mAgentId(other.mAgentId), mPartyId(other.mPartyId), mSelectionPolicy(other.mSelectionPolicy), mCoalitionId(other.mCoalitionId)
+Agent::Agent(Agent &&other) noexcept : mAgentId(other.mAgentId), mPartyId(other.mPartyId), mSelectionPolicy(other.mSelectionPolicy), mCoalitionId(other.mCoalitionId)  
 {
     other.mSelectionPolicy = nullptr;
 }
@@ -54,7 +54,7 @@ Agent &Agent::operator=(const Agent &other)
     return *this;
 }
 
-Agent &Agent::operator=(Agent &&other)
+Agent &Agent::operator=(Agent &&other) noexcept
 {
     mAgentId = other.getId();
     mPartyId = other.getPartyId();

@@ -18,7 +18,7 @@ Party::Party(const Party &other) : mId(other.mId), mName(other.mName), mMandates
         mJoinPolicy = new LastOfferJoinPolicy();
     }
 }
-Party::Party(Party &&other) : mId(other.mId), mName(other.mName), mMandates(other.mMandates),  mJoinPolicy(other.mJoinPolicy), mState(other.mState), iteration(other.iteration), offers(other.offers)
+Party::Party(Party &&other) noexcept : mId(other.mId), mName(other.mName), mMandates(other.mMandates),  mJoinPolicy(other.mJoinPolicy), mState(other.mState), iteration(other.iteration), offers(other.offers)
 {
     other.mJoinPolicy = nullptr;
 }
@@ -47,7 +47,7 @@ Party &Party::operator=(const Party &other)
 
     return *this;
 }
-Party &Party::operator=(Party &&other)
+Party &Party::operator=(Party &&other) noexcept
 {
     mId = other.mId;
     mName = other.mName;

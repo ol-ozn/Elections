@@ -5,7 +5,7 @@
 class SelectionPolicy {
     public:
         virtual int select(int agentPartyId, int agentCoalitionId, const Graph &graph) = 0;
-        virtual ~SelectionPolicy() = 0;
+        virtual ~SelectionPolicy() = default;
  };
 
 class MandatesSelectionPolicy: public SelectionPolicy{

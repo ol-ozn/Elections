@@ -21,10 +21,10 @@ class Party
 public:
     Party(int id, string name, int mandates, JoinPolicy *); 
     Party(const Party &other); //copy constructor
-    Party(Party &&other); //move constructor
+    Party(Party &&other) noexcept; //move constructor
     virtual ~Party(); //destructor
     Party &operator=(const Party &other); //copy assignment operator
-    Party &operator=(Party &&other); //move assignment operator
+    Party &operator=(Party &&other) noexcept; //move assignment operator
 
     State getState() const;
     void setState(State state);
