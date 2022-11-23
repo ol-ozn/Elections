@@ -20,3 +20,8 @@ int EdgeWeightSelectionPolicy::select(int agentPartyId, int agentCoalitionId, co
 
     return candidateId;
 }
+
+SelectionPolicy *EdgeWeightSelectionPolicy::clone()
+{
+    return new EdgeWeightSelectionPolicy();
+}

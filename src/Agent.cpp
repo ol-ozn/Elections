@@ -9,14 +9,7 @@ Agent::Agent(int agentId, int partyId, SelectionPolicy *selectionPolicy) : mAgen
 
 Agent::Agent(const Agent &other) : mAgentId(other.mAgentId), mPartyId(other.mPartyId), mSelectionPolicy(),mCoalitionId(other.mCoalitionId)
 {
-    if(dynamic_cast<MandatesSelectionPolicy*>(other.mSelectionPolicy))
-    {
-        mSelectionPolicy = new MandatesSelectionPolicy();
-    }
-    else 
-    {
-        mSelectionPolicy = new EdgeWeightSelectionPolicy();
-    }
+    mSelectionPolicy = other.mSelectionPolicy->clone();
 }
 
 Agent::Agent(Agent &&other) noexcept : mAgentId(other.mAgentId), mPartyId(other.mPartyId), mSelectionPolicy(other.mSelectionPolicy), mCoalitionId(other.mCoalitionId)  
@@ -26,14 +19,7 @@ Agent::Agent(Agent &&other) noexcept : mAgentId(other.mAgentId), mPartyId(other.
 
 Agent::Agent(int agentId, int partyId, const Agent &other) : mAgentId(agentId), mPartyId(partyId), mSelectionPolicy(), mCoalitionId(other.mCoalitionId)
 {
-    if(dynamic_cast<MandatesSelectionPolicy*>(other.mSelectionPolicy))
-    {
-        mSelectionPolicy = new MandatesSelectionPolicy();
-    }
-    else 
-    {
-        mSelectionPolicy = new EdgeWeightSelectionPolicy();
-    }
+    mSelectionPolicy = other.mSelectionPolicy->clone();
 }
 
 Agent::~Agent()

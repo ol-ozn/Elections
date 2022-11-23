@@ -9,14 +9,7 @@ Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName
 
 Party::Party(const Party &other) : mId(other.mId), mName(other.mName), mMandates(other.mMandates), mJoinPolicy(), mState(other.mState), iteration(other.iteration) ,offers(other.offers)
 {
-    if(dynamic_cast<MandatesJoinPolicy*>(other.mJoinPolicy))
-    {
-        mJoinPolicy = new MandatesJoinPolicy();
-    }
-    else 
-    {
-        mJoinPolicy = new LastOfferJoinPolicy();
-    }
+    mJoinPolicy = other.mJoinPolicy->clone();
 }
 Party::Party(Party &&other) noexcept : mId(other.mId), mName(other.mName), mMandates(other.mMandates),  mJoinPolicy(other.mJoinPolicy), mState(other.mState), iteration(other.iteration), offers(other.offers)
 {

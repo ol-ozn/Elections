@@ -19,3 +19,8 @@ int MandatesSelectionPolicy::select(int agentPartyId, int agentCoalitionId ,cons
    
    return candidateId;
 }
+
+SelectionPolicy *MandatesSelectionPolicy::clone()
+{
+    return new MandatesSelectionPolicy();
+}
